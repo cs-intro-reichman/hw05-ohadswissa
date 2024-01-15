@@ -179,6 +179,7 @@ public class GameOfLife {
 	
 	// Prints the board. Alive and dead cells are printed as 1 and 0, respectively.
    public static void print(int[][] arr) {
+
 		         int rows = arr.length;
 		         int columns = arr[0].length;
 		         for (int i = 0; i < rows; i++)
@@ -187,7 +188,6 @@ public class GameOfLife {
 		         	{
 		         		System.out.printf("%3s", arr[i][j]);
 		         	}
-		         	System.out.println();
 		         	System.out.println();
 		         }
 	}
