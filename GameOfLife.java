@@ -16,10 +16,10 @@ public class GameOfLife {
 	    //test3(fileName, 3);
 		 //play(fileName);
 		//count function test square.dat
-		//int [][] tester = read (fileName);
-		//System.out.println(count(tester,0,0));//1
-		//System.out.println(count(tester,2,2));//3
-		//System.out.println(count(tester,2,0));//2
+		int [][] tester = read (fileName);
+		System.out.println(count(tester,2,3));//1
+		System.out.println(count(tester,3,2));//3
+		System.out.println(count(tester,4,3));//2
 		//cellvalue test
 		//System.out.println(cellValue(tester,0,0));//
 		//System.out.println(cellValue(tester,2,2));//
@@ -123,9 +123,9 @@ public class GameOfLife {
 		int rows = board.length;
 		int columns = board[0].length;
 		int [][] nextgen = new int[rows][columns];
-		 for (int i = 1; i < rows; i++)
+		 for (int i = 1; i < rows-1; i++)
 		         {
-		         	for (int j = 1; j < columns; j++)
+		         	for (int j = 1; j < columns-1; j++)
 		         	{
 		         		nextgen[i][j] = cellValue(board,i,j);
 		         	}
@@ -160,6 +160,8 @@ public class GameOfLife {
 	// Assumes that j is at least 1 and at most the number of columns in the board - 1. 
 	public static int count(int[][] board, int i, int j) {
 	int count = 0;
+	i=i-1;
+	j=j-1;
 	int rows = board.length;
 	int columns = board[0].length;
 	//row-1
@@ -174,8 +176,9 @@ public class GameOfLife {
 	if ((i+1 < rows) && (j < columns) && (board[i+1][j] == 1)) count++;//board[i+1][j]
 	if ((i+1 <rows) && (j+1 < columns) && (board[i+1][j+1] == 1)) count++;//board[i+1][j+1]
 	return count;
-		
-	}
+	 }
+
+
 	
 	// Prints the board. Alive and dead cells are printed as 1 and 0, respectively.
    public static void print(int[][] arr) {
