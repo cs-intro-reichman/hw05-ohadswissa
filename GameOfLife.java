@@ -11,15 +11,15 @@ public class GameOfLife {
 		String fileName = args[0];
 		//// Uncomment the test that you want to execute, and re-compile.
 		//// (Run one test at a time).
-		test1(fileName);
+		//test1(fileName);
 		//// test2(fileName);
-	    //test3(fileName, 3);
+	    test3(fileName, 3);
 		 //play(fileName);
 		//count function test square.dat
 		int [][] tester = read (fileName);
-		System.out.println(count(tester,2,3));//1
-		System.out.println(count(tester,3,2));//3
-		System.out.println(count(tester,4,3));//2
+		//System.out.println(count(tester,2,3));//1
+		//System.out.println(count(tester,3,2));//3
+		//System.out.println(count(tester,4,3));//2
 		//cellvalue test
 		//System.out.println(cellValue(tester,0,0));//
 		//System.out.println(cellValue(tester,2,2));//
@@ -76,7 +76,7 @@ public class GameOfLife {
 		int N = board.length; // number of rows
         int M = board[0].length; // number of columns
 		//reads the file line and updating the board
-        while (!in.isEmpty())//while loop until the reading of the ducument ends
+        while (!in.isEmpty())//while loop until the reading of the ducument ends and the loop ends
          { 
         	for (int i = 0; i < N; i++) //fills the 2D array
         	{
@@ -127,7 +127,7 @@ public class GameOfLife {
 		         {
 		         	for (int j = 1; j < columns-1; j++)
 		         	{
-		         		nextgen[i][j] = cellValue(board,i,j);
+		         		nextgen[i-1][j-1] = cellValue(board,i,j);
 		         	}
 		         	
 		         }
@@ -145,14 +145,23 @@ public class GameOfLife {
 	// Assumes that j is at least 1 and at most the number of columns in the board - 1. 
 	// Uses the count(board,i,j) function to count the number of alive neighbors.
 	public static int cellValue(int[][] board, int i, int j) {
-		int counter = count(board,i,j);//live cell around
-		int value = board[i][j];//cell value
-		if ((value == 1) && (counter < 2)) return 0;
-		else if ((value == 1) && ((counter == 2) || (counter == 3))) return 1;
-		else if ((value == 1) && (counter > 3)) return 0;
-		else if ((value == 0) && (counter == 3)) return 1;
-		else return value;
-	}
+		//int counter = count(board,i,j);//live cell around
+		//int value = board[i-1][j-1];//cell value
+		//if ((value == 1) && (counter < 2)) return 0;
+		//else if ((value == 1) && ((counter == 2) || (counter == 3))) return 1;
+		//else if ((value == 1) && (counter > 3)) return 0;
+		//else if ((value == 0) && (counter == 3)) return 1;
+		//else return value;
+		  int counter = count(board, i, j); // live cell around
+    int value = board[i-1][j-1]; // cell value
+    if ((value == 1) && (counter < 2)) return 0;
+    else if ((value == 1) && ((counter == 2) || (counter == 3))) return 1;
+    else if ((value == 1) && (counter > 3)) return 0;
+    else if ((value == 0) && (counter == 3)) return 1;
+    else return value;
+}
+
+	
 	
 	// Counts and returns the number of living neighbors of the given cell
 	// (The cell itself is not counted).
