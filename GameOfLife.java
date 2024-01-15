@@ -70,8 +70,8 @@ public class GameOfLife {
 	// This function assumes that the input file contains valid data, and does no input testing.
 	public static int[][] read(String fileName) {
 		In in = new In(fileName); // Constructs an In object for reading the input file
-		int rows = Integer.parseInt(in.readLine());
-		int cols = Integer.parseInt(in.readLine());
+		int rows = Integer.parseInt(in.readLine())+1;
+		int cols = Integer.parseInt(in.readLine())+1;
 		int[][] board = new int[rows][cols]; //builds a proper 2D array
 		int N = board.length; // number of rows
         int M = board[0].length; // number of columns
@@ -123,9 +123,9 @@ public class GameOfLife {
 		int rows = board.length;
 		int columns = board[0].length;
 		int [][] nextgen = new int[rows][columns];
-		 for (int i = 0; i < rows; i++)
+		 for (int i = 1; i < rows; i++)
 		         {
-		         	for (int j = 0; j < columns; j++)
+		         	for (int j = 1; j < columns; j++)
 		         	{
 		         		nextgen[i][j] = cellValue(board,i,j);
 		         	}
@@ -163,14 +163,14 @@ public class GameOfLife {
 	int rows = board.length;
 	int columns = board[0].length;
 	//row-1
-	if ((i-1 >= 0) && (j-1 >= 0) && (j-1 < columns) && (board[i-1][j-1]== 1)) count++;//board[i-1][j-1]
-	if ((i-1 >= 0) && (j < columns) && (board[i-1][j] == 1)) count++;//(board[i-1][j]
-	if ((i-1 >= 0) && (j+1 < columns) && (board[i-1][j+1] == 1)) count++;//(board[i-1][j+1]
+	if ((i-1 >= 1) && (j-1 >= 1) && (j-1 < columns) && (board[i-1][j-1]== 1)) count++;//board[i-1][j-1]
+	if ((i-1 >= 1) && (j < columns) && (board[i-1][j] == 1)) count++;//(board[i-1][j]
+	if ((i-1 >= 1) && (j+1 < columns) && (board[i-1][j+1] == 1)) count++;//(board[i-1][j+1]
 	//row
 	if ((j-1 >= 0) && (board[i][j-1] == 1)) count++;//(board[i][j-1]
 	if ((j+1 < columns) && (board[i][j+1] == 1)) count++;//board[i][j+1]
 	//row+1
-	if ((i+1 < rows) && (j-1 >= 0) && (board[i+1][j-1] == 1)) count++;//board[i+1][j-1]
+	if ((i+1 < rows) && (j-1 >= 1) && (board[i+1][j-1] == 1)) count++;//board[i+1][j-1]
 	if ((i+1 < rows) && (j < columns) && (board[i+1][j] == 1)) count++;//board[i+1][j]
 	if ((i+1 <rows) && (j+1 < columns) && (board[i+1][j+1] == 1)) count++;//board[i+1][j+1]
 	return count;
@@ -182,9 +182,9 @@ public class GameOfLife {
 
 		         int rows = arr.length;
 		         int columns = arr[0].length;
-		         for (int i = 0; i < rows; i++)
+		         for (int i = 0; i < rows-1; i++)
 		         {
-		         	for (int j = 0; j < columns; j++)
+		         	for (int j = 0; j < columns-1; j++)
 		         	{
 		         		System.out.printf("%3s", arr[i][j]);
 		         	}
