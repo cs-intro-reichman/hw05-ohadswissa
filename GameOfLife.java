@@ -11,10 +11,10 @@ public class GameOfLife {
 		String fileName = args[0];
 		//// Uncomment the test that you want to execute, and re-compile.
 		//// (Run one test at a time).
-		//test1(fileName);
+		test1(fileName);
 		//// test2(fileName);
 	    //test3(fileName, 3);
-		 play(fileName);
+		 //play(fileName);
 		//count function test square.dat
 		//int [][] tester = read (fileName);
 		//System.out.println(count(tester,0,0));//1
@@ -185,7 +185,7 @@ public class GameOfLife {
 		         {
 		         	for (int j = 0; j < columns; j++)
 		         	{
-		         		System.out.printf("%4s", arr[i][j]);
+		         		System.out.printf("%3s", arr[i][j]);
 		         	}
 		         	System.out.printf("%n%n");
 		         }
