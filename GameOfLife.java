@@ -111,7 +111,7 @@ public class GameOfLife {
         		  
         	}
 	      }
-	    return board;
+	    return board; //return a full board after reading the document
 	  	}
 
 	
@@ -127,7 +127,7 @@ public class GameOfLife {
 		         {
 		         	for (int j = 1; j < columns-1; j++)
 		         	{
-		         		nextgen[i-1][j-1] = cellValue(board,i,j);
+		         		nextgen[i-1][j-1] = cellValue(board,i,j);//to match the game requirements for starting in row 1 column 1
 		         	}
 		         	
 		         }
@@ -145,15 +145,8 @@ public class GameOfLife {
 	// Assumes that j is at least 1 and at most the number of columns in the board - 1. 
 	// Uses the count(board,i,j) function to count the number of alive neighbors.
 	public static int cellValue(int[][] board, int i, int j) {
-		//int counter = count(board,i,j);//live cell around
-		//int value = board[i-1][j-1];//cell value
-		//if ((value == 1) && (counter < 2)) return 0;
-		//else if ((value == 1) && ((counter == 2) || (counter == 3))) return 1;
-		//else if ((value == 1) && (counter > 3)) return 0;
-		//else if ((value == 0) && (counter == 3)) return 1;
-		//else return value;
-		  int counter = count(board, i, j); // live cell around
-    int value = board[i-1][j-1]; // cell value
+    int counter = count(board, i, j); // live cell around. there is no need to get to i-1 j-1 because count function do that
+    int value = board[i-1][j-1]; // //to match the game requirements for starting in row 1 column 1
     if ((value == 1) && (counter < 2)) return 0;
     else if ((value == 1) && ((counter == 2) || (counter == 3))) return 1;
     else if ((value == 1) && (counter > 3)) return 0;
@@ -169,15 +162,15 @@ public class GameOfLife {
 	// Assumes that j is at least 1 and at most the number of columns in the board - 1. 
 	public static int count(int[][] board, int i, int j) {
 	int count = 0;
-	i=i-1;
-	j=j-1;
+	i=i-1;//to match the game requirements for starting in row 1 column 1
+	j=j-1;//to match the game requirements for starting in row 1 column 1
 	int rows = board.length;
 	int columns = board[0].length;
 	//row-1
 	if ((i-1 >= 1) && (j-1 >= 1) && (j-1 < columns) && (board[i-1][j-1]== 1)) count++;//board[i-1][j-1]
 	if ((i-1 >= 1) && (j < columns) && (board[i-1][j] == 1)) count++;//(board[i-1][j]
 	if ((i-1 >= 1) && (j+1 < columns) && (board[i-1][j+1] == 1)) count++;//(board[i-1][j+1]
-	//row
+	//origin row
 	if ((j-1 >= 0) && (board[i][j-1] == 1)) count++;//(board[i][j-1]
 	if ((j+1 < columns) && (board[i][j+1] == 1)) count++;//board[i][j+1]
 	//row+1
